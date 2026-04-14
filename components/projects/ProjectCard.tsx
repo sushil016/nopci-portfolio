@@ -29,18 +29,28 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [imgError, setImgError] = useState<boolean>(!project.image);
 
   return (
     <Card className="group h-full w-full overflow-hidden border-gray-100 p-0 shadow-none transition-all dark:border-gray-800">
       <CardHeader className="p-0">
         <div className="group relative aspect-video overflow-hidden">
-          <Image
-            className="h-full w-full object-cover"
-            src={project.image}
-            alt={project.title}
-            width={1920}
-            height={1080}
-          />
+          {!imgError ? (
+            <Image
+              className="h-full w-full object-cover"
+              src={project.image}
+              alt={project.title}
+              width={1920}
+              height={1080}
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <div className="from-primary/10 to-muted flex h-full w-full items-center justify-center bg-gradient-to-br">
+              <span className="text-muted-foreground text-4xl font-bold opacity-20">
+                {project.title[0]}
+              </span>
+            </div>
+          )}
           {project.video && (
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>

@@ -31,7 +31,7 @@ export const heroConfig = {
   // Personal Information
   name: 'Sushil Sahani',
   title: 'A Full Stack Developer & Cloud/DevOps Engineer.',
-  avatar: '/assets/logo.png',
+  avatar: '/favicon.jpeg',
 
   // Skills Configuration
   skills: [

@@ -3,6 +3,7 @@ import Azure from '@/components/technologies/Azure';
 import Docker from '@/components/technologies/Docker';
 import ExpressJs from '@/components/technologies/ExpressJs';
 import GCP from '@/components/technologies/GCP';
+import JavaScript from '@/components/technologies/JavaScript';
 import Kafka from '@/components/technologies/Kafka';
 import Kubernetes from '@/components/technologies/Kubernetes';
 import NodeJs from '@/components/technologies/NodeJs';
@@ -64,6 +65,53 @@ export const experiences: Experience[] = [
     website: '#',
   },
   {
+    isCurrent: true,
+    company: 'Robomaniac',
+    position: 'Co-founder & Tech Lead',
+    location: 'Remote / Hybrid',
+    image: '/company/robomaniac.png',
+    description: [
+      'Co-founded Robomaniac, an ed-tech startup dedicated to teaching Robotics and Artificial Intelligence to students aged 6 to 18.',
+      'Lead technical curriculum design covering embedded systems, robotics programming, sensors, actuators, and AI fundamentals tailored by age group.',
+      'Architecting and building the platform infrastructure supporting student progress tracking, course delivery, and instructor tooling.',
+    ],
+    startDate: 'November 2025',
+    endDate: 'Present',
+    technologies: [
+      { name: 'JavaScript', href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', icon: <JavaScript /> },
+      { name: 'TypeScript', href: 'https://www.typescriptlang.org/', icon: <TypeScript /> },
+      { name: 'React', href: 'https://react.dev/', icon: <ReactIcon /> },
+      { name: 'Node.js', href: 'https://nodejs.org/', icon: <NodeJs /> },
+      { name: 'PostgreSQL', href: 'https://www.postgresql.org/', icon: <PostgreSQL /> },
+      { name: 'Docker', href: 'https://www.docker.com/', icon: <Docker /> },
+    ],
+    website: '#',
+  },
+  {
+    isCurrent: true,
+    company: 'Innovation and Robotics Lab of BVCOE',
+    position: 'Vice President',
+    location: 'Navi Mumbai, Maharashtra, India · On-site',
+    image: '/company/bvcoe-irl.png',
+    description: [
+      'Currently serving as Vice President (March 2026 – Present), overseeing club operations, member recruitment, inter-college robotics competitions, and strategic initiatives.',
+      'Served as Head of Programming (April 2025 – March 2026), leading the software and robotics programming division and mentoring junior members.',
+      'Started as Software and Robotics Programmer (January 2024 – April 2025), building robotics projects and web applications for the club.',
+      'Continuous 2+ year contribution to the college robotics community, growing through three progressive roles and representing the college at multiple competitions.',
+    ],
+    startDate: 'January 2024',
+    endDate: 'Present',
+    technologies: [
+      { name: 'JavaScript', href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', icon: <JavaScript /> },
+      { name: 'TypeScript', href: 'https://www.typescriptlang.org/', icon: <TypeScript /> },
+      { name: 'React', href: 'https://react.dev/', icon: <ReactIcon /> },
+      { name: 'Node.js', href: 'https://nodejs.org/', icon: <NodeJs /> },
+      { name: 'Express.js', href: 'https://expressjs.com/', icon: <ExpressJs /> },
+      { name: 'PostgreSQL', href: 'https://www.postgresql.org/', icon: <PostgreSQL /> },
+    ],
+    website: '#',
+  },
+  {
     isCurrent: false,
     company: 'IIT Bombay',
     position: 'Full-Stack Intern',
@@ -72,7 +120,8 @@ export const experiences: Experience[] = [
     description: [
       'Developed a comprehensive Procurement Management System for the Aerospace Department at IIT Bombay, serving administrators and project staff involved in research projects.',
       'Built responsive React.js application with TypeScript.',
-      'Designed comprehensive PostgreSQL database schema.',
+      'Designed comprehensive PostgreSQL database schema with Prisma ORM.',
+      'Containerized the full application stack with Docker for consistent environments across development and production.',
     ],
     startDate: 'October 2024',
     endDate: 'January 2025',

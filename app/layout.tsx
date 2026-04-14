@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
+import BackToTop from "@/components/common/BackToTop";
+import ChatBubble from "@/components/common/ChatBubble";
+import Footer from "@/components/common/Footer";
+import Navbar from "@/components/common/Navbar";
+import { ThemeProvider } from "@/components/common/ThemeProviders";
+import { siteConfig } from "@/config/Meta";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nopci Portfolio",
-  description: "A themed portfolio website.",
+  title: siteConfig.title,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -27,9 +33,23 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        <ViewTransitions>{children}</ViewTransitions>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ViewTransitions>
+            <Navbar />
+            {children}
+            <Footer />
+            <ChatBubble />
+            <BackToTop />
+          </ViewTransitions>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,8 +1,10 @@
+'use client';
+
 import { type Experience } from '@/config/Experience';
 import { cn } from '@/lib/utils';
 import { Link } from 'next-view-transitions';
 import Image from 'next/image';
-import React from 'react';
+import { useState } from 'react';
 
 import Skill from '../common/Skill';
 import Github from '../svgs/Github';
@@ -20,19 +22,28 @@ const parseDescription = (text: string): string => {
 };
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
+  const [imgError, setImgError] = useState(!experience.image);
+
   return (
     <div className="flex flex-col gap-4">
       {/* Company Header */}
       <div className="flex flex-col gap-2 md:flex-row md:justify-between">
         {/* Left Side */}
         <div className="flex items-center gap-4">
-          <Image
-            src={experience.image}
-            alt={experience.company}
-            width={100}
-            height={100}
-            className="size-12 rounded-md"
-          />
+          {!imgError ? (
+            <Image
+              src={experience.image}
+              alt={experience.company}
+              width={100}
+              height={100}
+              className="size-12 rounded-md"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <div className="bg-muted flex size-12 items-center justify-center rounded-md text-sm font-bold">
+              {experience.company[0]}
+            </div>
+          )}
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
               <h3

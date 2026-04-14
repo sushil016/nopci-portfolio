@@ -1,5 +1,5 @@
 export const ctaConfig = {
-  profileImage: '/assets/logo.png',
+  profileImage: '/favicon.jpeg',
   profileAlt: 'Sushil Sahani',
   linkText: 'Book a Free Call',
   calLink: '#',
