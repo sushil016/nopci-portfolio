@@ -12,9 +12,10 @@ export interface PageMeta {
 // Base site configuration
 export const siteConfig = {
   name: heroConfig.name,
-  title: 'aspirant op — Portfolio',
-  description: 'Full Stack Developer & Cloud/DevOps Engineer — Sushil Sahani',
-  url: process.env.NEXT_PUBLIC_URL || 'http://localhost:3000',
+  title: 'Sushil Sahani — Full Stack Developer & DevOps Engineer',
+  description:
+    'Sushil Sahani — Full Stack Developer, Cloud/DevOps Engineer, and Robotics enthusiast from India. Building scalable web applications, AI systems, and production-grade infrastructure.',
+  url: process.env.NEXT_PUBLIC_URL || 'https://sushilsahani.dev',
   ogImage: '/meta/opengraph-image.png',
   author: {
     name: about.name,
@@ -24,30 +25,41 @@ export const siteConfig = {
     email: 'sahanisushil325@gmail.com',
   },
   keywords: [
-    'portfolio',
-    'developer',
-    'full-stack',
-    'cloud',
-    'devops',
-    'react',
-    'nextjs',
+    'Sushil Sahani',
+    'sushil sahani portfolio',
+    'sushil016',
+    'full stack developer india',
+    'devops engineer',
+    'cloud engineer',
+    'react developer',
+    'nextjs developer',
     'typescript',
+    'nodejs',
+    'kubernetes',
+    'docker',
+    'azure',
+    'robotics',
     'web development',
-    heroConfig.name.toLowerCase(),
+    'iit bombay intern',
   ],
 };
 
 export const pageMetadata: Record<string, PageMeta> = {
   // Home page
   '/': {
-    title: `${heroConfig.name} - ${heroConfig.title}`,
-    description: `${about.description} Explore my projects, experience, and technical expertise.`,
+    title: `Sushil Sahani — Full Stack Developer & DevOps Engineer`,
+    description: `${about.description} Explore my projects, work experience, and the systems I've built — from AI pipelines to robotics.`,
     keywords: [
+      'Sushil Sahani',
+      'full stack developer',
+      'devops engineer',
+      'cloud engineer',
+      'react developer',
+      'nodejs',
+      'kubernetes',
+      'robotics',
+      'india',
       'portfolio',
-      'developer',
-      'full-stack',
-      'web development',
-      'projects',
     ],
     ogImage: '/meta/hero.png',
     twitterCard: 'summary_large_image',
@@ -55,25 +67,31 @@ export const pageMetadata: Record<string, PageMeta> = {
 
   // Contact page
   '/contact': {
-    title: 'Contact - Get in Touch',
+    title: 'Contact Sushil Sahani — Hire or Collaborate',
     description:
-      "Get in touch with me for collaborations, projects, or opportunities. I'd love to hear from you!",
-    keywords: ['contact', 'hire', 'collaboration', 'freelance', 'developer'],
-    ogImage: '/assets/logo.png',
+      "Get in touch with Sushil Sahani for freelance projects, collaborations, or engineering roles. Open to remote opportunities worldwide.",
+    keywords: [
+      'contact Sushil Sahani',
+      'hire developer',
+      'hire devops engineer',
+      'freelance developer india',
+      'collaboration',
+    ],
+    ogImage: '/meta/opengraph-image.png',
     twitterCard: 'summary',
   },
 
   // Work Experience page
   '/work-experience': {
-    title: 'Work Experience - Professional Journey',
+    title: 'Work Experience — Sushil Sahani',
     description:
-      'Explore my professional work experience across different companies and roles in software development.',
+      'Professional experience of Sushil Sahani — DevOps Intern at Crew, IIT Bombay research intern, and Robotics Club Programming Head.',
     keywords: [
-      'work experience',
-      'career',
-      'professional',
-      'software developer',
-      'employment history',
+      'Sushil Sahani work experience',
+      'iit bombay intern',
+      'devops intern',
+      'crew devops',
+      'software developer experience',
     ],
     ogImage: '/meta/work.png',
     twitterCard: 'summary_large_image',
@@ -81,15 +99,16 @@ export const pageMetadata: Record<string, PageMeta> = {
 
   // Projects page
   '/projects': {
-    title: 'Projects - My Work & Projects Portfolio',
+    title: 'Projects — Sushil Sahani',
     description:
-      'Discover my projects and work across different technologies and domains. From web apps to mobile solutions.',
+      "Sushil Sahani's projects — AI content moderation pipelines, smart queue systems, real-time location tracking, 2D metaverse platforms, and more.",
     keywords: [
-      'projects',
-      'portfolio',
-      'web development',
-      'applications',
-      'software',
+      'Sushil Sahani projects',
+      'ai pipeline',
+      'content moderation',
+      'queue management system',
+      'gps tracking app',
+      'full stack projects',
     ],
     ogImage: '/meta/projects.png',
     twitterCard: 'summary_large_image',
@@ -97,31 +116,63 @@ export const pageMetadata: Record<string, PageMeta> = {
 
   // Blog page
   '/blog': {
-    title: 'Blog - Thoughts & Tutorials',
+    title: 'Blog — Sushil Sahani',
     description:
-      'Read my thoughts, tutorials, and insights on engineering, programming, and web development.',
+      'Technical writing by Sushil Sahani on robotics, ROS2, full stack development, DevOps, and system design.',
     keywords: [
-      'blog',
-      'tutorials',
-      'programming',
-      'web development',
+      'Sushil Sahani blog',
+      'ros2 guide',
+      'robotics tutorial',
+      'devops blog',
+      'system design',
       'technical writing',
     ],
     ogImage: '/meta/blogs.png',
     twitterCard: 'summary_large_image',
   },
 
+  // Journey page
+  '/journey': {
+    title: "Journey — Sushil Sahani's Engineering Story",
+    description:
+      "The story of Sushil Sahani's engineering journey — from zero to IIT Bombay intern, DevOps engineer, and Robotics Club lead.",
+    keywords: [
+      'Sushil Sahani journey',
+      'engineering student india',
+      'iit bombay internship',
+      'robowars',
+      'robotics club',
+      'self taught developer',
+    ],
+    ogImage: '/meta/opengraph-image.png',
+    twitterCard: 'summary_large_image',
+  },
+
+  // Certificates page
+  '/journey/certificates': {
+    title: 'Certificates & Achievements — Sushil Sahani',
+    description:
+      'Certificates and achievements of Sushil Sahani — IIT Bombay internship, Robowars 2025 3rd place, Plutonium 2026 national hackathon finalist.',
+    keywords: [
+      'Sushil Sahani certificates',
+      'iit bombay certificate',
+      'robowars 2025',
+      'plutonium hackathon',
+      'achievements',
+    ],
+    ogImage: '/meta/opengraph-image.png',
+    twitterCard: 'summary_large_image',
+  },
+
   // Resume page
   '/resume': {
-    title: 'Resume - Professional CV',
-    description: `View and download ${heroConfig.name}'s professional resume and CV. Technical skills, experience, and qualifications.`,
+    title: 'Resume — Sushil Sahani CV',
+    description: `Download Sushil Sahani's resume — Full Stack Developer, DevOps Engineer, and Robotics enthusiast with experience at IIT Bombay and Crew.`,
     keywords: [
-      'resume',
-      'cv',
-      'professional',
-      'skills',
-      'qualifications',
-      'download',
+      'Sushil Sahani resume',
+      'sushil sahani cv',
+      'developer resume download',
+      'devops engineer cv',
     ],
     ogImage: '/meta/resume.png',
     twitterCard: 'summary',
@@ -129,16 +180,16 @@ export const pageMetadata: Record<string, PageMeta> = {
 
   // Gears page
   '/gears': {
-    title: 'Gears - My Setup & Tools',
+    title: 'Gears & Setup — Sushil Sahani',
     description:
-      'Discover the tools, devices, and software I use to get my work done efficiently.',
+      'The hardware and software Sushil Sahani uses daily — MacBook Air M4, VS Code, Claude Code, Warp, Docker, Figma, and more.',
     keywords: [
-      'setup',
-      'tools',
-      'devices',
-      'software',
-      'productivity',
-      'development environment',
+      'developer setup',
+      'macbook air m4',
+      'vs code setup',
+      'developer tools',
+      'productivity setup',
+      'Sushil Sahani setup',
     ],
     ogImage: '/meta/gears.png',
     twitterCard: 'summary_large_image',
@@ -146,16 +197,15 @@ export const pageMetadata: Record<string, PageMeta> = {
 
   // Setup page
   '/setup': {
-    title: 'Setup Guide - VS Code Configuration',
+    title: 'VS Code Setup Guide — Sushil Sahani',
     description:
-      'Complete guide to setting up VS Code with my preferred configuration, extensions, and fonts for optimal development.',
+      'Complete VS Code setup guide by Sushil Sahani — extensions, fonts, settings.json, and Night Owl theme configuration.',
     keywords: [
-      'vscode',
-      'setup',
-      'configuration',
-      'extensions',
-      'development environment',
-      'guide',
+      'vscode setup',
+      'vscode extensions',
+      'night owl theme',
+      'fira code font',
+      'developer environment',
     ],
     ogImage: '/meta/setup.png',
     twitterCard: 'summary_large_image',

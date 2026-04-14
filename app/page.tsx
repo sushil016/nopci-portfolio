@@ -15,11 +15,11 @@ export default function Home() {
       <Hero />
       <Skills />
       <Experience />
-      <Terminal />
+      {/* <Terminal /> */}
       <DevDocs />
       <Projects />
       <Education />
-      <Github />
+      {/* <Github /> */}
       <Journey />
       <CTA />
     </main>

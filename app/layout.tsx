@@ -10,6 +10,27 @@ import { ThemeProvider } from "@/components/common/ThemeProviders";
 import { siteConfig } from "@/config/Meta";
 import "./globals.css";
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Sushil Sahani",
+  url: siteConfig.url,
+  image: `${siteConfig.url}/favicon.jpeg`,
+  jobTitle: "Full Stack Developer & DevOps Engineer",
+  description: siteConfig.description,
+  email: siteConfig.author.email,
+  sameAs: [
+    `https://github.com/${siteConfig.author.github}`,
+    `https://www.linkedin.com/in/${siteConfig.author.linkedin}/`,
+    `https://x.com/${siteConfig.author.twitter.replace("@", "")}`,
+  ],
+  knowsAbout: [
+    "React", "Next.js", "TypeScript", "Node.js", "PostgreSQL",
+    "Docker", "Kubernetes", "Azure", "GCP", "DevOps",
+    "Robotics", "ROS2", "Python", "Golang",
+  ],
+};
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -31,6 +52,12 @@ export default function RootLayout({
       className={`${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"

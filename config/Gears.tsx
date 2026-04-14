@@ -7,52 +7,132 @@ import Phone from '@/components/svgs/devices/Phone';
 
 export const devices = [
   {
-    name: 'Apple MacBook Pro 16"in M4 48GB 512GB',
+    name: 'Apple MacBook Air 13" M4 16GB',
     icon: <Laptop className="size-4" />,
+    description: 'Primary machine for all development',
   },
   {
-    name: 'LG Ultragear 27GN650 (27 inch, 68.5 cm)',
+    name: 'Acer SA272U 27" 4K Monitor',
     icon: <Monitor className="size-4" />,
+    description: 'External display for focus mode',
   },
   {
-    name: 'Magic Keyboard',
+    name: 'ASUS Marshmallow KW100 Bluetooth Keyboard',
     icon: <Keyboard className="size-4" />,
+    description: 'Quiet, wireless, comfortable for long sessions',
   },
   {
-    name: 'Logitech MX Master 3S Mouse',
+    name: 'Kreo X1 RGB Wired Gaming Mouse',
     icon: <Mouse className="size-4" />,
+    description: 'Precise and fast',
   },
   {
-    name: 'Crossbeats Roar 2.0 (Special Addition)',
+    name: 'CMF Earbuds Pro',
     icon: <Headphones className="size-4" />,
+    description: 'Active noise cancellation for deep work',
   },
   {
-    name: 'Samsung S23 (256 GB)',
+    name: 'iPhone 15 128GB',
     icon: <Phone className="size-4" />,
+    description: 'Testing mobile builds and staying reachable',
   },
 ];
 
-export const webExtensions = [
-  { name: 'Unhook', href: 'https://unhook.app/' },
-  { name: 'uBlock Origin', href: 'https://ublockorigin.com/' },
+export interface SoftwareTool {
+  name: string;
+  description: string;
+  href: string;
+  category?: string;
+}
+
+export const software: SoftwareTool[] = [
+  {
+    name: 'VS Code',
+    description: 'Primary code editor. Night Owl theme, Fira Code font.',
+    href: 'https://code.visualstudio.com',
+  },
+  {
+    name: 'Claude Code',
+    description: 'AI pair programmer for complex tasks and codebase navigation.',
+    href: 'https://claude.ai/code',
+  },
+  {
+    name: 'Warp',
+    description: 'AI-powered terminal that actually understands commands.',
+    href: 'https://www.warp.dev',
+  },
+  {
+    name: 'TablePlus',
+    description: 'Clean GUI for PostgreSQL, Redis, and MySQL databases.',
+    href: 'https://tableplus.com',
+  },
+  {
+    name: 'Postman',
+    description: 'API testing and collection management.',
+    href: 'https://www.postman.com',
+  },
+  {
+    name: 'Docker Desktop',
+    description: 'Container management for local dev and testing.',
+    href: 'https://www.docker.com/products/docker-desktop',
+  },
+  {
+    name: 'Figma',
+    description: 'UI design, wireframing, and design system work.',
+    href: 'https://www.figma.com',
+  },
+  {
+    name: 'Notion',
+    description: 'Notes, project planning, and documentation.',
+    href: 'https://www.notion.so',
+  },
+  {
+    name: 'Raycast',
+    description: 'Spotlight replacement. Clipboard history, snippets, extensions.',
+    href: 'https://www.raycast.com',
+  },
+  {
+    name: 'Arc Browser',
+    description: 'Main browser. Spaces for separating work and personal browsing.',
+    href: 'https://arc.net',
+  },
+];
+
+export interface WebExtension {
+  name: string;
+  description: string;
+  href: string;
+}
+
+export const webExtensions: WebExtension[] = [
   {
     name: 'React Developer Tools',
-    href: 'https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en',
+    description: 'Inspect React component trees and state in the browser.',
+    href: 'https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi',
   },
-  { name: 'daily.dev', href: 'https://daily.dev/' },
-  { name: 'Grammarly', href: 'https://www.grammarly.com/' },
-  { name: 'Wappalyzer', href: 'https://www.wappalyzer.com/' },
+  {
+    name: 'uBlock Origin',
+    description: 'Ad and tracker blocker. Keeps browsing clean and fast.',
+    href: 'https://ublockorigin.com',
+  },
+  {
+    name: 'Wappalyzer',
+    description: "Identify what tech stack any website is running.",
+    href: 'https://www.wappalyzer.com',
+  },
+  {
+    name: 'JSON Formatter',
+    description: 'Auto-formats raw JSON responses in the browser tab.',
+    href: 'https://chromewebstore.google.com/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa',
+  },
   {
     name: 'ColorZilla',
-    href: 'https://chromewebstore.google.com/detail/colorzilla/bhlhnicpbhignbdhedgjhgdocnmhomnp?hl=en',
+    description: 'Eyedropper and color picker directly in the browser.',
+    href: 'https://www.colorzilla.com',
   },
-];
-
-export const software = [
-  { name: 'Dia', href: 'https://www.diabrowser.com/' },
-  { name: 'Notion', href: 'https://www.notion.so/desktop' },
-  { name: 'TickTick', href: 'https://ticktick.com/download' },
-  { name: 'OBS Studio', href: 'https://obsproject.com/' },
-  { name: 'VLC', href: 'https://www.videolan.org/vlc/' },
-  { name: 'Ghostty', href: 'https://ghostty.org/' },
+  {
+    name: 'daily.dev',
+    description: 'Developer news feed on every new tab.',
+    href: 'https://daily.dev',
+  },
 ];

@@ -30,7 +30,7 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: 'Sushil Sahani',
-  title: 'A Full Stack Developer & Cloud/DevOps Engineer.',
+  title: 'Software Developer with 2+ years of experience',
   avatar: '/favicon.jpeg',
 
   // Skills Configuration
@@ -65,7 +65,7 @@ export const heroConfig = {
   // Description Configuration
   description: {
     template:
-      'Full stack developer, expertise in <b>Cloud</b>, <b>DevOps</b> and <b>AI Infrastructure</b>. Building and Deploying Scalable Application.',
+      'Building scalable web applications and cloud infrastructure. Expertise in <b>Cloud</b>, <b>DevOps</b> and <b>AI Infrastructure</b>I co-founded <b>Robomaniac</b>A Ed-tech <b>STEM Ai & robotics startup focused on delevering education to students.</b>I also have a passion for technology and love sharing knowledge through my <b>blog</b> and <b>YouTube channel</b>.',
   },
 
   // Buttons Configuration
