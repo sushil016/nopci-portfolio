@@ -1,27 +1,21 @@
 export const certificates = [
   {
-    file: '/blog/frontend-part-1.png',
-    title: 'SSoC Certificate',
-    issuer: 'Summer of Code (SSoC)',
-    date: '2025-10-10',
+    file: '/certificates/iit-bombay-internship.jpg',
+    title: 'Research Internship Certificate',
+    issuer: 'IIT Bombay',
+    date: '2025-05-01',
   },
   {
-    file: '/blog/how-to-be-me.png',
-    title: 'Example Certificate 1',
-    issuer: 'Example Issuer',
-    date: '2024-01-01',
+    file: '/certificates/robowars-2025.jpg',
+    title: 'Robowars 2025 – 3rd Place',
+    issuer: 'Robowars Competition',
+    date: '2025-03-01',
   },
   {
-    file: '/blog/frontend-part-1.png',
-    title: 'Example Certificate 2',
-    issuer: 'Example Issuer',
-    date: '2023-08-01',
-  },
-  {
-    file: '/blog/how-to-be-me.png',
-    title: 'SSoC Participation Certificate',
-    issuer: 'SSoC',
-    date: '2025-10-10',
+    file: '/certificates/plutonium-2026.jpg',
+    title: 'Plutonium 2026 – National Hackathon Finalist',
+    issuer: 'Plutonium 24hr National Hackathon',
+    date: '2026-02-01',
   },
 ];
 

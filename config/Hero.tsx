@@ -78,8 +78,8 @@ export const heroConfig = {
     },
     {
       variant: 'default',
-      text: 'Get in touch',
-      href: '/contact',
+      text: 'My journey',
+      href: '/journey',
       icon: 'Chat',
     },
   ],

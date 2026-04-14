@@ -14,14 +14,14 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const pages = [
-  { label: 'Home', href: '/', icon: '🏠' },
-  { label: 'Work Experience', href: '/work-experience', icon: '💼' },
-  { label: 'Projects', href: '/projects', icon: '🚀' },
-  { label: 'Blog', href: '/blog', icon: '📝' },
-  { label: 'Journey', href: '/journey', icon: '🗺️' },
-  { label: 'Resume', href: '/resume', icon: '📄' },
-  { label: 'Setup', href: '/setup', icon: '🛠️' },
-  { label: 'Contact', href: '/contact', icon: '✉️' },
+  { label: 'Home | Explore landing page', href: '/', icon: '' },
+  { label: 'Work Experience | View My Professional Journey', href: '/work-experience', icon: '' },
+  { label: 'Projects | See My Work', href: '/projects', icon: '' },
+  { label: 'Blog | Read My Thoughts', href: '/blog', icon: '' },
+  { label: 'Journey | About Me', href: '/journey', icon: '' },
+  { label: 'Resume | View My Professional Background', href: '/resume', icon: '' },
+  { label: 'Setup | Configure Your Environment', href: '/setup', icon: '' },
+  { label: 'Contact | Get In Touch', href: '/contact', icon: '' },
 ];
 
 export function SearchCommand() {

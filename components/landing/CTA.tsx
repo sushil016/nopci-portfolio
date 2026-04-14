@@ -4,6 +4,7 @@ import { ctaConfig } from '@/config/CTA';
 import { useHapticFeedback } from '@/hooks/use-haptic-feedback';
 import Cal, { getCalApi } from '@calcom/embed-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import Container from '../common/Container';
@@ -23,6 +24,11 @@ interface CallToActionProps {
   preText?: string;
 }
 
+// A calLink is a Cal.com link when it doesn't start with '/', 'http', or 'mailto'
+function isCalLink(link: string) {
+  return link !== '#' && !link.startsWith('/') && !link.startsWith('http') && !link.startsWith('mailto');
+}
+
 export default function CTA({
   profileImage = ctaConfig.profileImage,
   profileAlt = ctaConfig.profileAlt,
@@ -32,17 +38,18 @@ export default function CTA({
 }: CallToActionProps) {
   const { triggerHaptic, isMobile } = useHapticFeedback();
   const [showCalPopup, setShowCalPopup] = useState(false);
+  const router = useRouter();
+  const usesCal = isCalLink(calLink);
 
   useEffect(() => {
+    if (!usesCal) return;
     const cal = async () => {
       try {
         const calApi = await getCalApi();
         if (calApi) {
           calApi('on', {
             action: 'bookingSuccessful',
-            callback: () => {
-              setShowCalPopup(false);
-            },
+            callback: () => setShowCalPopup(false),
           });
         }
       } catch (error) {
@@ -50,13 +57,19 @@ export default function CTA({
       }
     };
     cal();
-  }, []);
+  }, [usesCal]);
 
   const handleButtonClick = () => {
     if (isMobile()) {
       triggerHaptic('medium');
     }
-    setShowCalPopup(true);
+    if (usesCal) {
+      setShowCalPopup(true);
+    } else if (calLink.startsWith('mailto')) {
+      window.location.href = calLink;
+    } else {
+      router.push(calLink);
+    }
   };
 
   return (
@@ -111,29 +124,30 @@ export default function CTA({
         </div>
       </Container>
 
-      {/* Cal.com Dialog */}
-      <Dialog open={showCalPopup} onOpenChange={setShowCalPopup}>
-        <DialogContent className="max-h-[90vh] max-w-[calc(100vw-2rem)] overflow-hidden sm:max-w-[calc(100vw-4rem)] md:max-w-4xl">
-          <DialogHeader>
-            <DialogTitle>Book a Meeting</DialogTitle>
-            <DialogDescription>
-              Schedule a time to connect and discuss opportunities
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="max-h-[calc(90vh-220px)] overflow-y-auto rounded-lg">
-            <Cal
-              calLink={calLink}
-              config={{
-                name: 'Portfolio Visitor',
-                email: '',
-                notes: 'Booked from portfolio website',
-              }}
-              className="h-[500px] w-full rounded-lg"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
+      {/* Cal.com Dialog — only rendered when calLink is a Cal.com username */}
+      {usesCal && (
+        <Dialog open={showCalPopup} onOpenChange={setShowCalPopup}>
+          <DialogContent className="max-h-[90vh] max-w-[calc(100vw-2rem)] overflow-hidden sm:max-w-[calc(100vw-4rem)] md:max-w-4xl">
+            <DialogHeader>
+              <DialogTitle>Book a Meeting</DialogTitle>
+              <DialogDescription>
+                Schedule a time to connect and discuss opportunities
+              </DialogDescription>
+            </DialogHeader>
+            <div className="max-h-[calc(90vh-220px)] overflow-y-auto rounded-lg">
+              <Cal
+                calLink={calLink}
+                config={{
+                  name: 'Portfolio Visitor',
+                  email: '',
+                  notes: 'Booked from portfolio website',
+                }}
+                className="h-[500px] w-full rounded-lg"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </>
   );
 }

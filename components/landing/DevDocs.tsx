@@ -7,7 +7,7 @@ import SectionHeading from '../common/SectionHeading';
 const docs = [
   {
     emoji: '',
-    title: 'How ROS 2 Works',
+    title: 'ROS2 Setup & Concepts',
     description:
       'Deep dive into Robot Operating System 2 — nodes, topics, services, actions, and DDS communication explained from a developer perspective.',
     tags: ['Robotics', 'ROS2', 'Systems'],
@@ -23,7 +23,7 @@ const docs = [
   },
   {
     emoji: '',
-    title: 'Autonomous Drone Making',
+    title: 'Building Autonomous Kamikaze Drones with ROS2',
     description:
       'Designing, programming, and flying autonomous drones — covering flight controllers, PID tuning, sensor fusion, and mission planning.',
     tags: ['Drone', 'Embedded', 'Autonomy'],
@@ -31,7 +31,15 @@ const docs = [
   },
   {
     emoji: '',
-    title: 'Building Developer Tools',
+    title: 'ROS2 Integration with Cloud Services',
+    description:
+      'Learn how to integrate ROS2 with cloud platforms for remote monitoring, data processing, and collaborative robotics.',
+    tags: ['ROS2', 'Cloud', 'Integration'],
+    href: '/blog',
+  },
+  {
+    emoji: '',
+    title: 'Building Developer Tools of Robotics',
     description:
       'How to craft CLIs, build automation scripts, and create tools that supercharge developer workflows and save hours of repetitive work.',
     tags: ['CLI', 'Tooling', 'DX'],
@@ -52,7 +60,7 @@ export default function DevDocs() {
     <Container className="mt-20">
       <SectionHeading subHeading="Dev Writing" heading="Documentation & Deep Dives" />
       <p className="text-muted-foreground mt-2 text-sm">
-        Technical explorations I&apos;m writing — robotics, developer tooling, and systems engineering.
+        Technical explorations I&apos;m writing — software, robotics, developer tooling, and systems engineering.
       </p>
 
       <div className="mt-6 flex flex-col gap-2">

@@ -2,7 +2,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
-const journeyDirectory = path.join(process.cwd(), 'src/data/journey');
+const journeyDirectory = path.join(process.cwd(), 'data/journey');
 
 export function getJourneyContent() {
   try {

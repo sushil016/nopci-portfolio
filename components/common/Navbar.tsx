@@ -16,7 +16,7 @@ export default function Navbar() {
             href="/"
             className="font-bold text-sm tracking-tight transition-opacity hover:opacity-70"
           >
-            aspirant op
+            Home
           </Link>
           <div className="hidden sm:flex items-center justify-center gap-4">
             {navbarConfig.navItems.map((item) => (
