@@ -11,6 +11,7 @@ interface TerminalLine {
 }
 
 const PROMPT = 'aspirant@portfolio:~$';
+const PROMPT_SHORT = '~$';
 
 const COMMANDS: Record<string, () => string> = {
   help: () =>
@@ -203,7 +204,7 @@ Type "help" to see available commands.`,
 
       {/* Terminal window */}
       <div
-        className="mt-6 overflow-hidden rounded-xl border border-border/60 bg-zinc-950 font-mono text-sm shadow-2xl dark:border-zinc-800"
+        className="mt-6 overflow-hidden rounded-xl border border-border/60 bg-zinc-950 font-mono text-xs sm:text-sm shadow-2xl dark:border-zinc-800"
         onClick={() => inputRef.current?.focus()}
       >
         {/* Title bar */}
@@ -220,7 +221,10 @@ Type "help" to see available commands.`,
             <div key={i} className="mb-1">
               {line.type === 'input' && (
                 <div className="flex gap-2">
-                  <span className="shrink-0 text-green-400">{PROMPT}</span>
+                  <span className="shrink-0 text-green-400">
+                    <span className="hidden sm:inline">{PROMPT}</span>
+                    <span className="sm:hidden">{PROMPT_SHORT}</span>
+                  </span>
                   <span className="text-zinc-100">{line.content}</span>
                 </div>
               )}
@@ -235,7 +239,10 @@ Type "help" to see available commands.`,
 
           {/* Active prompt */}
           <div className="mt-1 flex items-center gap-2">
-            <span className="shrink-0 text-green-400">{PROMPT}</span>
+            <span className="shrink-0 text-green-400">
+              <span className="hidden sm:inline">{PROMPT}</span>
+              <span className="sm:hidden">{PROMPT_SHORT}</span>
+            </span>
             <input
               ref={inputRef}
               value={input}

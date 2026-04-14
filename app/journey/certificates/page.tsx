@@ -62,7 +62,7 @@ export default function CertificatesPage() {
     <Container className="py-16">
       <div className="space-y-8">
         <div className="space-y-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Certificates & Achievements
           </h1>
           <p className="text-muted-foreground mx-auto max-w-2xl text-lg">

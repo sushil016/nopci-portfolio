@@ -24,9 +24,10 @@ export function ExperienceCardCompact({ experience }: ExperienceCardCompactProps
       {/* Compact header — always visible, click to expand */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between gap-4 p-4 text-left transition-colors hover:bg-muted/20"
+        className="flex w-full items-center justify-between gap-3 p-4 text-left transition-colors hover:bg-muted/20"
       >
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        {/* Left: company + badge (+ position/location on sm+) */}
+        <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
           <span className={cn('font-semibold', experience.isBlur ? 'blur-[5px]' : '')}>
             {experience.company}
           </span>
@@ -38,16 +39,17 @@ export function ExperienceCardCompact({ experience }: ExperienceCardCompactProps
             </span>
           )}
 
-          <span className="text-muted-foreground text-sm">·</span>
-          <span className="text-sm">{experience.position}</span>
-          <span className="text-muted-foreground text-sm hidden sm:inline">·</span>
-          <span className="text-muted-foreground text-xs hidden sm:inline">
+          <span className="text-muted-foreground hidden sm:inline text-sm">·</span>
+          <span className="hidden sm:inline text-sm">{experience.position}</span>
+          <span className="text-muted-foreground hidden md:inline text-sm">·</span>
+          <span className="text-muted-foreground hidden md:inline text-xs">
             {experience.location}
           </span>
         </div>
 
+        {/* Right: dates (hidden on mobile) + chevron */}
         <div className="flex shrink-0 items-center gap-2">
-          <span className="text-muted-foreground whitespace-nowrap text-xs">
+          <span className="text-muted-foreground hidden sm:block whitespace-nowrap text-xs">
             {experience.startDate} — {experience.isCurrent ? 'Present' : experience.endDate}
           </span>
           <ChevronDown
@@ -62,8 +64,14 @@ export function ExperienceCardCompact({ experience }: ExperienceCardCompactProps
       {/* Expandable full details */}
       {open && (
         <div className="space-y-4 border-t border-border/40 px-4 pb-5 pt-4">
-          {/* Location — visible on mobile only (hidden in header) */}
-          <p className="text-muted-foreground text-xs sm:hidden">{experience.location}</p>
+          {/* Mobile-only: position, dates, location */}
+          <div className="sm:hidden space-y-0.5">
+            <p className="text-sm font-medium">{experience.position}</p>
+            <p className="text-muted-foreground text-xs">
+              {experience.startDate} — {experience.isCurrent ? 'Present' : experience.endDate}
+            </p>
+            <p className="text-muted-foreground text-xs">{experience.location}</p>
+          </div>
 
           {/* Technologies */}
           <div>

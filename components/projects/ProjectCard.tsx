@@ -81,8 +81,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="space-y-4">
           {/* Project Header - Title and Icons */}
           <div className="flex items-center justify-between gap-4">
-            <Link href={project.projectDetailsPageSlug}>
-              <h3 className="group-hover:text-primary text-xl leading-tight font-semibold hover:cursor-pointer">
+            <Link href={project.projectDetailsPageSlug} className="min-w-0">
+              <h3 className="group-hover:text-primary text-lg leading-tight font-semibold hover:cursor-pointer sm:text-xl">
                 {project.title}
               </h3>
             </Link>
