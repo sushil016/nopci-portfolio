@@ -36,7 +36,7 @@ export const heroConfig = {
   // Skills Configuration
   skills: [
     {
-      name: 'Typescript',
+      name: 'TypeScript',
       href: 'https://www.typescriptlang.org/',
       component: 'TypeScript',
     },
