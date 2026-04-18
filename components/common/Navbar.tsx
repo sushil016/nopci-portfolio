@@ -1,9 +1,9 @@
 import { navbarConfig } from '@/config/Navbar';
 import { Link } from 'next-view-transitions';
-import React from 'react';
 
 import Container from './Container';
 import MobileMenu from './MobileMenu';
+import { ModeToggle } from './ModeToggle';
 import { SearchCommand } from './SearchCommand';
 import { ThemeToggleButton } from './ThemeSwitch';
 
@@ -31,6 +31,7 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
+          <ModeToggle />
           <SearchCommand />
           <ThemeToggleButton variant="circle" start="top-right" blur />
           <MobileMenu />

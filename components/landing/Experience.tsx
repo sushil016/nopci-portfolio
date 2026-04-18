@@ -1,6 +1,9 @@
+'use client';
+
 import { type Experience, experiences } from '@/config/Experience';
+import { roboticsExperiences } from '@/config/ExperienceRobotics';
+import { useMode } from '@/hooks/ModeContext';
 import { Link } from 'next-view-transitions';
-import React from 'react';
 
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
@@ -11,6 +14,9 @@ function formatDateRange(startDate: string, endDate: string, isCurrent: boolean)
 }
 
 export default function Experience() {
+  const { mode } = useMode();
+  const activeExperiences = mode === 'robotics' ? roboticsExperiences : experiences;
+
   return (
     <Container className="mt-20">
       <SectionHeading subHeading="Featured" heading="Experience" />
@@ -20,8 +26,8 @@ export default function Experience() {
         <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border/60" />
 
         <div className="flex flex-col gap-0">
-          {experiences.map((exp: Experience, idx: number) => (
-            <div key={exp.company} className="relative flex gap-5 pb-8 last:pb-0">
+          {activeExperiences.map((exp: Experience) => (
+            <div key={`${exp.company}-${exp.position}`} className="relative flex gap-5 pb-8 last:pb-0">
               {/* Dot */}
               <div className="relative z-10 mt-[5px] flex-shrink-0">
                 <div

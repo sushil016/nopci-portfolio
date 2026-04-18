@@ -1,7 +1,10 @@
 'use client';
 
 import { skillsRow1, skillsRow2, type Skill } from '@/config/Skills';
+import { roboticsSkillsRow1, roboticsSkillsRow2 } from '@/config/SkillsRobotics';
+import { useMode } from '@/hooks/ModeContext';
 import { Link } from 'next-view-transitions';
+import React from 'react';
 
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
@@ -54,16 +57,26 @@ function MarqueeRow({ skills, reverse }: { skills: Skill[]; reverse?: boolean })
 }
 
 export default function Skills() {
+  const { mode } = useMode();
+  const isRobotics = mode === 'robotics';
+  const row1 = isRobotics ? roboticsSkillsRow1 : skillsRow1;
+  const row2 = isRobotics ? roboticsSkillsRow2 : skillsRow2;
+
   return (
     <Container className="mt-20">
-      <SectionHeading subHeading="What I use" heading="Tech Stack" />
+      <SectionHeading
+        subHeading="What I use"
+        heading={isRobotics ? 'Robotics Stack' : 'Tech Stack'}
+      />
       <p className="text-muted-foreground mt-2 text-sm">
-        Languages, frameworks, databases, and infrastructure I work with.
+        {isRobotics
+          ? 'Hardware, frameworks, and tools I use for autonomous systems and robotics.'
+          : 'Languages, frameworks, databases, and infrastructure I work with.'}
       </p>
 
       <div className="mt-6 flex flex-col gap-3">
-        <MarqueeRow skills={skillsRow1} />
-        <MarqueeRow skills={skillsRow2} reverse />
+        <MarqueeRow skills={row1} />
+        <MarqueeRow skills={row2} reverse />
       </div>
     </Container>
   );

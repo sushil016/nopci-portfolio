@@ -7,6 +7,7 @@ import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/Navbar";
 import Oneko from "@/components/common/Oneko";
 import { ThemeProvider } from "@/components/common/ThemeProviders";
+import { ModeProvider } from "@/hooks/ModeContext";
 import { siteConfig } from "@/config/Meta";
 import "./globals.css";
 
@@ -65,14 +66,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ViewTransitions>
-            <Navbar />
-            {children}
-            <Footer />
-            {/* <ChatBubble /> */}
-            <BackToTop />
-            <Oneko />
-          </ViewTransitions>
+          <ModeProvider>
+            <ViewTransitions>
+              <Navbar />
+              {children}
+              <Footer />
+              {/* <ChatBubble /> */}
+              <BackToTop />
+              <Oneko />
+            </ViewTransitions>
+          </ModeProvider>
         </ThemeProvider>
       </body>
     </html>

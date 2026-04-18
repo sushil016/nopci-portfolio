@@ -1,0 +1,315 @@
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; background: #0a0a0a; color: #e5e5e5; }
+  h2 { color: #fff; margin-bottom: 6px; }
+  .subtitle { color: #777; margin-bottom: 32px; }
+
+  .cards { display: flex; flex-direction: column; gap: 28px; }
+  .card {
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #222;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { border-color: #444; }
+  .card.selected { border-color: #22c55e !important; box-shadow: 0 0 0 1px #22c55e, 0 0 20px rgba(34,197,94,0.12); }
+
+  .card-label {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .card-letter {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px; background: #1f1f1f; color: #666;
+    flex-shrink: 0;
+  }
+  .card.selected .card-letter { background: #22c55e22; color: #22c55e; }
+  .card-name { font-weight: 600; font-size: 15px; color: #fff; }
+  .card-desc { font-size: 12px; color: #666; margin-top: 2px; }
+
+  .preview { padding: 20px; }
+
+  /* ===== THEME A — Green Matrix / Terminal ===== */
+  .theme-green {
+    background: #030a03;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    position: relative;
+    overflow: hidden;
+  }
+  .theme-green::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,255,70,0.015) 2px,
+      rgba(0,255,70,0.015) 4px
+    );
+    pointer-events: none;
+  }
+  .tg-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 14px; border-bottom: 1px solid #0f2f0f; margin-bottom: 20px;
+  }
+  .tg-logo { color: #00ff46; font-weight: 700; font-size: 13px; text-shadow: 0 0 8px rgba(0,255,70,0.5); }
+  .tg-pill {
+    background: #0a1a0a; border: 1px solid #1a3a1a; border-radius: 999px;
+    padding: 3px; display: flex; gap: 2px;
+  }
+  .tg-opt { padding: 4px 12px; border-radius: 999px; font-size: 11px; color: #3a6a3a; }
+  .tg-opt.on { background: #00ff46; color: #000; font-weight: 700; text-shadow: none; }
+  .tg-hero { margin: 16px 0; }
+  .tg-tag { color: #3a6a3a; font-size: 11px; }
+  .tg-name { color: #00ff46; font-size: 22px; font-weight: 700; text-shadow: 0 0 12px rgba(0,255,70,0.4); margin: 4px 0; }
+  .tg-title { color: #5aaa5a; font-size: 13px; }
+  .tg-desc { color: #3a6a3a; font-size: 12px; margin: 10px 0; line-height: 1.7; }
+  .tg-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .tg-chip {
+    padding: 4px 10px; border-radius: 4px; font-size: 11px;
+    border: 1px solid #0f3a0f; color: #00ff46; background: #050f05;
+  }
+  .tg-cursor { display: inline-block; width: 8px; height: 14px; background: #00ff46; animation: blink 1s infinite; vertical-align: middle; margin-left: 2px; }
+  @keyframes blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+
+  /* ===== THEME B — Cyan HUD / Aerospace ===== */
+  .theme-cyan {
+    background: #020810;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .theme-cyan::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(0,180,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .tc-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 14px; border-bottom: 1px solid #0a1e2e; margin-bottom: 20px;
+  }
+  .tc-logo { color: #00b4ff; font-weight: 700; font-size: 13px; letter-spacing: 0.05em; }
+  .tc-pill {
+    background: #010c18; border: 1px solid #0a2a3a; border-radius: 999px;
+    padding: 3px; display: flex; gap: 2px;
+  }
+  .tc-opt { padding: 4px 12px; border-radius: 999px; font-size: 11px; color: #1a4a5a; }
+  .tc-opt.on { background: #00b4ff; color: #000; font-weight: 700; }
+  .tc-hud-bar {
+    display: flex; gap: 16px; margin-bottom: 16px;
+    border: 1px solid #0a2a3a; border-radius: 6px; padding: 8px 12px;
+    background: rgba(0,180,255,0.02);
+  }
+  .tc-stat { font-size: 10px; color: #1a4a5a; }
+  .tc-stat span { display: block; color: #00b4ff; font-weight: 600; font-size: 13px; }
+  .tc-name { color: #e0f4ff; font-size: 22px; font-weight: 700; margin: 8px 0 4px; }
+  .tc-title { color: #00b4ff; font-size: 13px; letter-spacing: 0.05em; }
+  .tc-desc { color: #3a6a8a; font-size: 12px; margin: 10px 0; line-height: 1.7; }
+  .tc-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .tc-chip {
+    padding: 4px 10px; border-radius: 4px; font-size: 11px;
+    border: 1px solid #0a2a3a; color: #00b4ff; background: #010c18;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+
+  /* ===== THEME C — Amber Retro Terminal ===== */
+  .theme-amber {
+    background: #080500;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    position: relative;
+    overflow: hidden;
+  }
+  .theme-amber::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(255,160,0,0.02) 3px,
+      rgba(255,160,0,0.02) 4px
+    );
+    pointer-events: none;
+  }
+  .ta-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 14px; border-bottom: 1px solid #1a1000; margin-bottom: 20px;
+  }
+  .ta-logo { color: #ffa000; font-weight: 700; font-size: 13px; text-shadow: 0 0 8px rgba(255,160,0,0.4); }
+  .ta-pill {
+    background: #100a00; border: 1px solid #2a1800; border-radius: 999px;
+    padding: 3px; display: flex; gap: 2px;
+  }
+  .ta-opt { padding: 4px 12px; border-radius: 999px; font-size: 11px; color: #4a3000; }
+  .ta-opt.on { background: #ffa000; color: #000; font-weight: 700; }
+  .ta-prompt { color: #4a3000; font-size: 11px; margin-bottom: 4px; }
+  .ta-name { color: #ffa000; font-size: 22px; font-weight: 700; text-shadow: 0 0 10px rgba(255,160,0,0.35); margin: 8px 0 4px; }
+  .ta-title { color: #cc8000; font-size: 13px; }
+  .ta-desc { color: #4a3000; font-size: 12px; margin: 10px 0; line-height: 1.7; }
+  .ta-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .ta-chip {
+    padding: 4px 10px; border-radius: 4px; font-size: 11px;
+    border: 1px solid #2a1800; color: #ffa000; background: #100a00;
+  }
+  .ta-cursor { display: inline-block; width: 8px; height: 14px; background: #ffa000; animation: blink 1s infinite; vertical-align: middle; margin-left: 2px; }
+
+  .tags-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .tag { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: #1a1a1a; color: #777; border: 1px solid #2a2a2a; }
+  .tag.g { background: rgba(34,197,94,0.08); color: #22c55e; border-color: rgba(34,197,94,0.2); }
+  .tag.y { background: rgba(234,179,8,0.08); color: #eab308; border-color: rgba(234,179,8,0.2); }
+</style>
+
+<h2>Robotics Mode — Theme Vibe</h2>
+<p class="subtitle">Full hero section preview — how the landing page feels when 🤖 Robotics is active</p>
+
+<div class="cards">
+
+  <!-- THEME A — Matrix Green -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-label">
+      <div class="card-letter">A</div>
+      <div>
+        <div class="card-name">Matrix Green / Terminal</div>
+        <div class="card-desc">Dark with neon green — hacker/ROS terminal aesthetic</div>
+      </div>
+    </div>
+    <div class="preview">
+      <div class="theme-green">
+        <div class="tg-nav">
+          <div class="tg-logo">&gt; SUSHIL_</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="display:flex;gap:12px;font-size:11px;color:#3a6a3a">
+              <span>Work</span><span>Projects</span><span>Blogs</span>
+            </div>
+            <div class="tg-pill">
+              <div class="tg-opt">⚡ Software</div>
+              <div class="tg-opt on">🤖 Robotics</div>
+            </div>
+          </div>
+        </div>
+        <div class="tg-hero">
+          <div class="tg-tag">// autonomous_systems.init()</div>
+          <div class="tg-name">Hi, I'm Sushil Sahani<div class="tg-cursor"></div></div>
+          <div class="tg-title">Robotics Engineer — UAV Systems &amp; Autonomous Navigation</div>
+          <div class="tg-desc">Building autonomous UAV systems with ROS2, Pixhawk, and computer vision. Counter-drone AI, sensor fusion, and real-time telemetry for mission-critical operations.</div>
+          <div class="tg-chips">
+            <div class="tg-chip">ROS2</div>
+            <div class="tg-chip">Python</div>
+            <div class="tg-chip">MAVLink</div>
+            <div class="tg-chip">OpenCV</div>
+            <div class="tg-chip">Pixhawk</div>
+          </div>
+        </div>
+      </div>
+      <div class="tags-row">
+        <span class="tag g">Strongly distinct from software mode</span>
+        <span class="tag g">Terminal feel — fits ROS/embedded vibe</span>
+        <span class="tag">High contrast, bold personality</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- THEME B — Cyan HUD -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-label">
+      <div class="card-letter">B</div>
+      <div>
+        <div class="card-name">Cyan HUD / Aerospace</div>
+        <div class="card-desc">Blue-cyan with HUD telemetry panels — cockpit/aerospace feel</div>
+      </div>
+    </div>
+    <div class="preview">
+      <div class="theme-cyan">
+        <div class="tc-nav">
+          <div class="tc-logo">SUSHIL.SYS</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="display:flex;gap:12px;font-size:11px;color:#1a4a5a">
+              <span>Work</span><span>Projects</span><span>Blogs</span>
+            </div>
+            <div class="tc-pill">
+              <div class="tc-opt">⚡ Software</div>
+              <div class="tc-opt on">🤖 Robotics</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-hud-bar">
+          <div class="tc-stat">STATUS<span>ONLINE</span></div>
+          <div class="tc-stat">SYSTEMS<span>ROS2</span></div>
+          <div class="tc-stat">PLATFORM<span>PIXHAWK</span></div>
+          <div class="tc-stat">MISSION<span>ACTIVE</span></div>
+        </div>
+        <div class="tc-name">Hi, I'm Sushil Sahani</div>
+        <div class="tc-title">ROBOTICS ENGINEER · UAV SYSTEMS · AUTONOMOUS NAVIGATION</div>
+        <div class="tc-desc">Building autonomous UAV systems with ROS2, Pixhawk, and computer vision. Counter-drone AI, sensor fusion, and real-time telemetry for mission-critical operations.</div>
+        <div class="tc-chips">
+          <div class="tc-chip">ROS2</div>
+          <div class="tc-chip">Python</div>
+          <div class="tc-chip">MAVLink</div>
+          <div class="tc-chip">OpenCV</div>
+          <div class="tc-chip">Pixhawk</div>
+        </div>
+      </div>
+      <div class="tags-row">
+        <span class="tag g">Professional aerospace look</span>
+        <span class="tag g">HUD stats panel adds real data feel</span>
+        <span class="tag y">Less "hacky", more "engineer"</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- THEME C — Amber Retro -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-label">
+      <div class="card-letter">C</div>
+      <div>
+        <div class="card-name">Amber Retro Terminal</div>
+        <div class="card-desc">Warm amber glow — vintage embedded/UART terminal aesthetic</div>
+      </div>
+    </div>
+    <div class="preview">
+      <div class="theme-amber">
+        <div class="ta-nav">
+          <div class="ta-logo">$ SUSHIL_</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="display:flex;gap:12px;font-size:11px;color:#4a3000">
+              <span>Work</span><span>Projects</span><span>Blogs</span>
+            </div>
+            <div class="ta-pill">
+              <div class="ta-opt">⚡ Software</div>
+              <div class="ta-opt on">🤖 Robotics</div>
+            </div>
+          </div>
+        </div>
+        <div class="ta-prompt">root@drone:~$ ./init_navigation.sh</div>
+        <div class="ta-name">Hi, I'm Sushil Sahani<div class="ta-cursor"></div></div>
+        <div class="ta-title">Robotics Engineer — UAV Systems &amp; Autonomous Navigation</div>
+        <div class="ta-desc">Building autonomous UAV systems with ROS2, Pixhawk, and computer vision. Counter-drone AI, sensor fusion, and real-time telemetry for mission-critical operations.</div>
+        <div class="ta-chips">
+          <div class="ta-chip">ROS2</div>
+          <div class="ta-chip">Python</div>
+          <div class="ta-chip">MAVLink</div>
+          <div class="ta-chip">OpenCV</div>
+          <div class="ta-chip">Pixhawk</div>
+        </div>
+      </div>
+      <div class="tags-row">
+        <span class="tag g">Warm, very distinctive</span>
+        <span class="tag g">Great embedded/UART vibe</span>
+        <span class="tag y">Less common — bolder choice</span>
+      </div>
+    </div>
+  </div>
+
+</div>

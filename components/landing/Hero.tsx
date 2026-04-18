@@ -1,4 +1,8 @@
+'use client';
+
 import { heroConfig, skillComponents, socialLinks } from '@/config/Hero';
+import { roboticsHeroConfig, roboticsSkillComponents, roboticsSocialLinks } from '@/config/HeroRobotics';
+import { useMode } from '@/hooks/ModeContext';
 import { parseTemplate } from '@/lib/hero';
 import { cn } from '@/lib/utils';
 import { Link } from 'next-view-transitions';
@@ -18,15 +22,21 @@ const buttonIcons = {
 };
 
 export default function Hero() {
-  const { name, title, avatar, skills, description, buttons } = heroConfig;
+  const { mode } = useMode();
+  const isRobotics = mode === 'robotics';
+  const config = isRobotics ? roboticsHeroConfig : heroConfig;
+  const activeSkillComponents = isRobotics ? roboticsSkillComponents : skillComponents;
+  const activeSocialLinks = isRobotics ? roboticsSocialLinks : socialLinks;
+  const { name, title, avatar, skills, description, buttons } = config;
 
   const renderDescription = () => {
     const parts = parseTemplate(description.template, skills);
 
     return parts.map((part) => {
       if (part.type === 'skill' && 'skill' in part && part.skill) {
-        const SkillComponent =
-          skillComponents[part.skill.component as keyof typeof skillComponents];
+        const SkillComponent = activeSkillComponents[
+          part.skill.component as keyof typeof activeSkillComponents
+        ] as React.ComponentType;
         return (
           <Skill key={part.key} name={part.skill.name} href={part.skill.href}>
             <SkillComponent />
@@ -94,7 +104,7 @@ export default function Hero() {
 
       {/* Social Links */}
       <div className="mt-8 flex gap-2">
-        {socialLinks.map((link) => (
+        {activeSocialLinks.map((link) => (
           <Tooltip key={link.name} delayDuration={0}>
             <TooltipTrigger asChild>
               <Link
