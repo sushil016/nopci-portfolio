@@ -1,9 +1,7 @@
 export const ctaConfig = {
   profileImage: '/favicon.jpeg',
   profileAlt: 'Sushil Sahani',
-  linkText: 'Book a Free Call',
-  // Set to a Cal.com username/event (e.g. "sushilsahani/30min") to use Cal embed,
-  // or set to '/contact' to route to the contact page.
-  calLink: '/contact',
-  preText: "Hey, you scrolled this far, let's talk.",
+  linkText: 'Hire me for freelance work',
+  calLink: 'mailto:sahanisushil325@gmail.com',
+  preText: 'Looking for a freelance developer? Let\'s build something together.',
 };
