@@ -17,11 +17,30 @@ import { Project } from '@/types/project';
 
 export const projects: Project[] = [
   {
+    title: 'Rat-Cat Code, Vibe Togother.',
+    description:
+      'A space to code together. Walk up to people. Talk with proximity voice. Sync a YouTube video or pair program on a GitHub repo — all inside a 2D world you can actually move around in.',
+    image: '/rat-cat.png',
+    link: 'https://notewrite-edtech.vercel.app/',
+    technologies: [
+      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
+      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
+      { name: 'React', icon: <ReactIcon key="web-csocket" /> },
+      { name: 'Node.js', icon: <NodeJs key="redis" /> },
+      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
+      { name: 'Prisma', icon: <Prisma key="prisma" /> },
+    ],
+    github: 'https://github.com/sushil016/rat-cat_talk-in-your-space',
+    live: 'https://ratcat.sushilsahani.dev/',
+    details: false,
+    projectDetailsPageSlug: 'rat-cat',
+    isWorking: true,
+  },{
     title: 'Notewrite',
     description:
       'Full-stack education platform managing 15+ engineering courses with automated content management system for educational resources and study materials. Implements secure user authentication and payment gateway for course purchases.',
     image: '/notewrite.png',
-    link: '#',
+    link: 'https://notewrite-edtech.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
@@ -30,10 +49,10 @@ export const projects: Project[] = [
       { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
       { name: 'Prisma', icon: <Prisma key="prisma" /> },
     ],
-    github: '#',
-    live: '#',
+    github: 'https://github.com/sushil016/notewrite-edtech',
+    live: 'https://notewrite-edtech.vercel.app/',
     details: false,
-    projectDetailsPageSlug: '',
+    projectDetailsPageSlug: 'notewrite',
     isWorking: true,
   },
   {
@@ -41,7 +60,7 @@ export const projects: Project[] = [
     description:
       'Scalable moderation API using Google Cloud Vision for fast screening and Anthropic Claude for context-aware analysis, with smart escalation reducing LLM usage by ~85%. Supports images, GIFs, and videos via parallel FFmpeg frame analysis.',
     image: '/mod-X.jpeg',
-    link: '#',
+    link: 'https://mod-x-409486837822.asia-south1.run.app/',
     technologies: [
       { name: 'React', icon: <ReactIcon key="react" /> },
       { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
@@ -49,58 +68,18 @@ export const projects: Project[] = [
       { name: 'GCP', icon: <GCP key="gcp" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
     ],
-    github: '#',
-    live: '#',
+    github: 'https://github.com/sushil016/mod-x',
+    live: 'https://mod-x-409486837822.asia-south1.run.app/',
     details: false,
-    projectDetailsPageSlug: '',
-    isWorking: true,
-  },
-  {
-    title: 'CrewArcade — Arcade Engine',
-    description:
-      'Innovative platform that transforms simple prompts into interactive games and flowchart videos using advanced AI algorithms and game development frameworks. Built scalable architecture with React.js frontend, Supabase backend, and PostgreSQL database, enabling users to create engaging interactive content without technical expertise.',
-    image: '',
-    link: '#',
-    technologies: [
-      { name: 'React', icon: <ReactIcon key="react" /> },
-      { name: 'JavaScript', icon: <JavaScript key="js" /> },
-      { name: 'TypeScript', icon: <TypeScript key="ts" /> },
-      { name: 'Supabase', icon: <Supabase key="supabase" /> },
-      { name: 'PostgreSQL', icon: <PostgreSQL key="pg" /> },
-      { name: 'Docker', icon: <Docker key="docker" /> },
-    ],
-    github: '#',
-    live: '#',
-    details: false,
-    projectDetailsPageSlug: '',
-    isWorking: true,
-  },
-  {
-    title: 'Robonauts — College Robotics Team',
-    description:
-      "Official website for Bharati Vidyapeeth's College of Engineering robotics team showcasing team achievements, projects, and upcoming events. Developed responsive web application with dynamic content management, team member profiles, and event registration system.",
-    image: '',
-    link: '#',
-    technologies: [
-      { name: 'JavaScript', icon: <JavaScript key="js" /> },
-      { name: 'TypeScript', icon: <TypeScript key="ts" /> },
-      { name: 'React', icon: <ReactIcon key="react" /> },
-      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
-      { name: 'Express.js', icon: <ExpressJs key="expressjs" /> },
-      { name: 'PostgreSQL', icon: <PostgreSQL key="pg" /> },
-    ],
-    github: '#',
-    live: '#',
-    details: false,
-    projectDetailsPageSlug: '',
+    projectDetailsPageSlug: 'mod-x',
     isWorking: true,
   },
   {
     title: 'Robomania — Competition Platform',
     description:
       "Comprehensive competition registration website for Bharati Vidyapeeth's robotics competitions with real-time registration tracking and participant management. Implemented secure user authentication, payment integration, and automated email notifications.",
-    image: '',
-    link: '#',
+    image: '/robomania.png',
+    link: 'https://robomania-teal.vercel.app/',
     technologies: [
       { name: 'JavaScript', icon: <JavaScript key="js" /> },
       { name: 'TypeScript', icon: <TypeScript key="ts" /> },
@@ -109,18 +88,39 @@ export const projects: Project[] = [
       { name: 'Express.js', icon: <ExpressJs key="expressjs" /> },
       { name: 'PostgreSQL', icon: <PostgreSQL key="pg" /> },
     ],
-    github: '#',
-    live: '#',
+    github: 'https://github.com/sushil016/robomania',
+    live: 'https://robomania-teal.vercel.app/',
     details: false,
-    projectDetailsPageSlug: '',
+    projectDetailsPageSlug: 'robomania',
     isWorking: true,
   },
+  {
+    title: 'Robonauts — College Robotics Team',
+    description:
+      "Official website for Bharati Vidyapeeth's College of Engineering robotics team showcasing team achievements, projects, and upcoming events. Developed responsive web application with dynamic content management, team member profiles, and event registration system.",
+    image: '/robonauts.png',
+    link: 'https://robonauts-one.vercel.app/',
+    technologies: [
+      { name: 'JavaScript', icon: <JavaScript key="js" /> },
+      { name: 'TypeScript', icon: <TypeScript key="ts" /> },
+      { name: 'React', icon: <ReactIcon key="react" /> },
+      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
+      { name: 'Express.js', icon: <ExpressJs key="expressjs" /> },
+      { name: 'PostgreSQL', icon: <PostgreSQL key="pg" /> },
+    ],
+    github: 'https://github.com/sushil016/Robonauts-intro',
+    live: 'https://robonauts-one.vercel.app/',
+    details: false,
+    projectDetailsPageSlug: 'robonauts',
+    isWorking: true,
+  },
+  
   {
     title: 'LumaDev — Web Dev Agency',
     description:
       'Professional web development agency website showcasing services, portfolio, and team expertise with modern design and seamless user experience. Built with scalable architecture featuring dynamic content management, client testimonials, and service booking system.',
-    image: '',
-    link: '#',
+    image: '/lumadev.png',
+    link: 'https://lumadev.in/',
     technologies: [
       { name: 'JavaScript', icon: <JavaScript key="js" /> },
       { name: 'TypeScript', icon: <TypeScript key="ts" /> },
@@ -130,10 +130,10 @@ export const projects: Project[] = [
       { name: 'PostgreSQL', icon: <PostgreSQL key="pg" /> },
       { name: 'Docker', icon: <Docker key="docker" /> },
     ],
-    github: '#',
-    live: '#',
+    github: 'https://github.com/sushil016/LumaDev',
+    live: 'https://lumadev.in/',
     details: false,
-    projectDetailsPageSlug: '',
+    projectDetailsPageSlug: 'lumadev',
     isWorking: true,
   },
   {
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     title: 'Solution AI — Learning Platform',
     description:
       'AI-driven personalized learning platform that recommends tailored question sets using Scikit-learn and collaborative filtering for adaptive learning. Integrated ML models into a Next.js full-stack application with PostgreSQL and Prisma ORM, enhancing engagement by 30% through personalized study plans.',
-    image: '',
+    image: '/solutionai.png',
     link: '#',
     technologies: [
       { name: 'React', icon: <ReactIcon key="react" /> },
