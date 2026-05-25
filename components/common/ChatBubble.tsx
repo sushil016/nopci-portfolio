@@ -1,6 +1,5 @@
 'use client';
 
-import ChatBubbleIcon from '@/components/svgs/ChatBubbleIcon';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,6 +14,7 @@ import { chatSuggestions } from '@/config/ChatPrompt';
 import { heroConfig } from '@/config/Hero';
 import { useHapticFeedback } from '@/hooks/use-haptic-feedback';
 import { cn } from '@/lib/utils';
+import { Bot } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
@@ -251,7 +251,13 @@ const ChatBubble: React.FC = () => {
       className="mt-4 ml-4 max-h-[95vh] max-w-[calc(100vw-2rem)] hover:cursor-pointer sm:max-w-[calc(100vw-4rem)] md:max-w-xl"
       position="bottom-right"
       size="lg"
-      icon={<ChatBubbleIcon className="h-6 w-6" />}
+      icon={
+        <>
+          <Bot className="h-5 w-5" />
+          <span className="text-sm font-medium">Ask AI</span>
+        </>
+      }
+      toggleClassName="h-12 w-auto gap-2 rounded-full border border-black/[0.1] bg-white/70 px-4 text-zinc-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),inset_0_-12px_22px_rgba(0,0,0,0.035),0_14px_34px_rgba(0,0,0,0.16)] backdrop-blur-2xl hover:bg-white/85 hover:shadow-black/20 dark:border-white/[0.16] dark:bg-black/55 dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.16),inset_0_-12px_22px_rgba(255,255,255,0.04),0_14px_34px_rgba(0,0,0,0.32)] dark:hover:bg-black/65 dark:hover:shadow-black/30"
     >
       <ExpandableChatHeader>
         <div className="flex items-center space-x-3">

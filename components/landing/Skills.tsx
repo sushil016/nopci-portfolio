@@ -63,7 +63,7 @@ export default function Skills() {
   const row2 = isRobotics ? roboticsSkillsRow2 : skillsRow2;
 
   return (
-    <Container className="mt-20">
+    <Container className="">
       <SectionHeading
         subHeading="What I use"
         heading={isRobotics ? 'Robotics Stack' : 'Tech Stack'}

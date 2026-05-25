@@ -134,12 +134,16 @@ export const useThemeToggle = ({
 
 export const ThemeToggleButton = ({
   className = '',
+  iconClassName = '',
+  icon = 'current',
   variant = 'circle',
   start = 'center',
   blur = false,
   gifUrl = '',
 }: {
   className?: string;
+  iconClassName?: string;
+  icon?: 'current' | 'target' | 'moon' | 'sun';
   variant?: AnimationVariant;
   start?: AnimationStart;
   blur?: boolean;
@@ -165,7 +169,11 @@ export const ThemeToggleButton = ({
       aria-label="Toggle theme"
     >
       <span className="sr-only">Toggle theme</span>
-      {isDark ? <Moon className="size-4" /> : <Sun className="size-4" />}
+      {icon === 'moon' || (icon === 'current' && isDark) || (icon === 'target' && !isDark) ? (
+        <Moon className={cn('size-4', iconClassName)} />
+      ) : (
+        <Sun className={cn('size-4', iconClassName)} />
+      )}
     </Button>
   );
 };

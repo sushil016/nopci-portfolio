@@ -20,8 +20,8 @@ export const projects: Project[] = [
     title: 'Rat-Cat Code, Vibe Togother.',
     description:
       'A space to code together. Walk up to people. Talk with proximity voice. Sync a YouTube video or pair program on a GitHub repo — all inside a 2D world you can actually move around in.',
-    image: '/rat-cat.png',
-    link: 'https://notewrite-edtech.vercel.app/',
+    image: '/ratcat.jpeg',
+    link: 'https://ratcat.sushilsahani.dev/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
@@ -35,32 +35,13 @@ export const projects: Project[] = [
     details: false,
     projectDetailsPageSlug: 'rat-cat',
     isWorking: true,
-  },{
-    title: 'Notewrite',
-    description:
-      'Full-stack education platform managing 15+ engineering courses with automated content management system for educational resources and study materials. Implements secure user authentication and payment gateway for course purchases.',
-    image: '/notewrite.png',
-    link: 'https://notewrite-edtech.vercel.app/',
-    technologies: [
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'React', icon: <ReactIcon key="react" /> },
-      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
-      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
-      { name: 'Prisma', icon: <Prisma key="prisma" /> },
-    ],
-    github: 'https://github.com/sushil016/notewrite-edtech',
-    live: 'https://notewrite-edtech.vercel.app/',
-    details: false,
-    projectDetailsPageSlug: 'notewrite',
-    isWorking: true,
   },
   {
     title: 'Content Moderation Pipeline',
     description:
       'Scalable moderation API using Google Cloud Vision for fast screening and Anthropic Claude for context-aware analysis, with smart escalation reducing LLM usage by ~85%. Supports images, GIFs, and videos via parallel FFmpeg frame analysis.',
-    image: '/mod-X.jpeg',
-    link: 'https://mod-x-409486837822.asia-south1.run.app/',
+    image: '/mod-me.jpeg',
+    link: 'https://mod-x.sushilsahani.dev',
     technologies: [
       { name: 'React', icon: <ReactIcon key="react" /> },
       { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
@@ -69,7 +50,7 @@ export const projects: Project[] = [
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
     ],
     github: 'https://github.com/sushil016/mod-x',
-    live: 'https://mod-x-409486837822.asia-south1.run.app/',
+    live: 'https://mod-x.sushilsahani.dev',
     details: false,
     projectDetailsPageSlug: 'mod-x',
     isWorking: true,
@@ -137,25 +118,6 @@ export const projects: Project[] = [
     isWorking: true,
   },
   {
-    title: 'getChecked — Location Tracker',
-    description:
-      'Real-time location tracking app where users can pin locations, set radius, and track movements with detailed insights on time spent in different zones. AI-powered attendance management for organizations with automated weekly reports combining manual and system check-in/out data.',
-    image: '',
-    link: '#',
-    technologies: [
-      { name: 'React Native', icon: <ReactNative key="rn" /> },
-      { name: 'TypeScript', icon: <TypeScript key="ts" /> },
-      { name: 'Expo', icon: <Expo key="expo" /> },
-      { name: 'PostgreSQL', icon: <PostgreSQL key="pg" /> },
-      { name: 'Express.js', icon: <ExpressJs key="expressjs" /> },
-    ],
-    github: '#',
-    live: '#',
-    details: false,
-    projectDetailsPageSlug: '',
-    isWorking: true,
-  },
-  {
     title: 'Solution AI — Learning Platform',
     description:
       'AI-driven personalized learning platform that recommends tailored question sets using Scikit-learn and collaborative filtering for adaptive learning. Integrated ML models into a Next.js full-stack application with PostgreSQL and Prisma ORM, enhancing engagement by 30% through personalized study plans.',
@@ -168,8 +130,8 @@ export const projects: Project[] = [
       { name: 'Scikit-learn', icon: <Sklearn key="sklearn" /> },
       { name: 'Docker', icon: <Docker key="docker" /> },
     ],
-    github: '#',
-    live: '#',
+    github: 'https://github.com/sushil016/solution-ai',
+    live: 'https://solutionai.sushilsahani.dev',
     details: false,
     projectDetailsPageSlug: '',
     isWorking: true,

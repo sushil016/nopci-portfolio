@@ -48,7 +48,7 @@ export default function Oneko() {
     nekoEl.style.imageRendering = 'pixelated';
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
-    nekoEl.style.zIndex = '2147483647';
+    nekoEl.style.zIndex = '30';
     nekoEl.style.backgroundImage = 'url(/oneko/oneko.gif)';
 
     document.body.appendChild(nekoEl);

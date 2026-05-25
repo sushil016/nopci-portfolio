@@ -9,9 +9,10 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command';
-import { SearchIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Command, SearchIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 
 const pages = [
   { label: 'Home | Explore landing page', href: '/', icon: '' },
@@ -24,14 +25,33 @@ const pages = [
   { label: 'Contact | Get In Touch', href: '/contact', icon: '' },
 ];
 
-export function SearchCommand() {
-  const [open, setOpen] = useState(false);
-  const [isMac, setIsMac] = useState(true);
-  const router = useRouter();
+function getPlatform() {
+  if (typeof navigator === 'undefined') return '';
 
-  useEffect(() => {
-    setIsMac(/Mac|iPad|iPhone|iPod/.test(navigator.platform));
-  }, []);
+  return navigator.platform;
+}
+
+function subscribeToPlatform() {
+  return () => {};
+}
+
+export function SearchCommand({
+  triggerClassName,
+  label = 'Quick search',
+  showShortcut = true,
+}: {
+  triggerClassName?: string;
+  label?: string;
+  showShortcut?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const platform = useSyncExternalStore(
+    subscribeToPlatform,
+    getPlatform,
+    () => '',
+  );
+  const isApple = /Mac|iPad|iPhone|iPod/.test(platform);
+  const router = useRouter();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -53,13 +73,23 @@ export function SearchCommand() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 rounded-md border border-input bg-muted/50 px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted"
+        className={cn(
+          'flex items-center gap-2 rounded-md border border-input bg-muted/50 px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted',
+          triggerClassName,
+        )}
       >
         <SearchIcon className="size-3.5 shrink-0" />
-        <span className="hidden sm:inline">Quick search</span>
-        <kbd className="pointer-events-none hidden select-none items-center gap-1 rounded border bg-background px-1.5 py-0.5 font-mono text-xs sm:flex">
-          {isMac ? '⌘' : 'Ctrl'} K
-        </kbd>
+        <span>{label}</span>
+        {showShortcut && (
+          <kbd className="pointer-events-none flex h-5 select-none items-center gap-0.5 rounded-[7px] border border-black/10 bg-white/55 px-1 font-mono text-[10px] font-medium text-zinc-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] dark:border-white/[0.12] dark:bg-white/[0.06] dark:text-zinc-300 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+            {isApple ? (
+              <Command className="size-2.5" aria-label="Command" />
+            ) : (
+              <span>Ctrl</span>
+            )}
+            <span>K</span>
+          </kbd>
+        )}
       </button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>

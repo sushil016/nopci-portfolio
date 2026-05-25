@@ -29,7 +29,7 @@ export const skillComponents = {
 
 export const heroConfig = {
   // Personal Information
-  name: 'Sushil Sahani',
+  name: 'Hi I\'m Sushil Sahani',
   title: 'Software Developer with 2+ years of experience',
   avatar: '/favicon.jpeg',
 
@@ -92,16 +92,17 @@ export const socialLinks = [
     href: 'https://x.com/not_aspirant',
     icon: <X />,
   },
+    {
+    name: 'Github',
+    href: 'https://github.com/sushil016',
+    icon: <Github />,
+  },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/sushil-sahani-46235527b/',
     icon: <LinkedIn />,
   },
-  {
-    name: 'Github',
-    href: 'https://github.com/sushil016',
-    icon: <Github />,
-  },
+
   {
     name: 'Discord',
     href: 'https://discord.com/users/sushilz16',

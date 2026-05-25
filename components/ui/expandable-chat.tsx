@@ -36,6 +36,7 @@ interface ExpandableChatProps extends React.HTMLAttributes<HTMLDivElement> {
   position?: ChatPosition;
   size?: ChatSize;
   icon?: React.ReactNode;
+  toggleClassName?: string;
 }
 
 const ExpandableChat: React.FC<ExpandableChatProps> = ({
@@ -43,6 +44,7 @@ const ExpandableChat: React.FC<ExpandableChatProps> = ({
   position = 'bottom-right',
   size = 'md',
   icon,
+  toggleClassName,
   children,
   ...props
 }) => {
@@ -83,6 +85,7 @@ const ExpandableChat: React.FC<ExpandableChatProps> = ({
         icon={icon}
         isOpen={isOpen}
         toggleChat={toggleChat}
+        className={toggleClassName}
       />
     </div>
   );

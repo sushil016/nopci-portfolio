@@ -71,7 +71,7 @@ export default function RootLayout({
               <Navbar />
               {children}
               <Footer />
-              {/* <ChatBubble /> */}
+              <ChatBubble />
               <BackToTop />
               <Oneko />
             </ViewTransitions>

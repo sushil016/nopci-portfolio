@@ -13,14 +13,7 @@ const docs = [
     tags: ['Robotics', 'ROS2', 'Systems'],
     href: '/blog',
   },
-  {
-    emoji: '',
-    title: 'Building Projects with ROS 2',
-    description:
-      'Hands-on guide to building real robotics projects — from workspace setup and package creation to deploying nodes on hardware.',
-    tags: ['ROS2', 'Project', 'Robotics'],
-    href: '/blog',
-  },
+
   {
     emoji: '',
     title: 'Building Autonomous Kamikaze Drones with ROS2',
@@ -45,14 +38,7 @@ const docs = [
     tags: ['CLI', 'Tooling', 'DX'],
     href: '/blog',
   },
-  {
-    emoji: '',
-    title: 'VS Code Extension Development',
-    description:
-      'From zero to published — building, packaging, and shipping VS Code extensions with the Extension API and TypeScript.',
-    tags: ['VS Code', 'Extension', 'TypeScript'],
-    href: '/blog',
-  },
+
 ];
 
 export default function DevDocs() {
