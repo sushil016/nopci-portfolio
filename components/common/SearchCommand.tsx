@@ -39,10 +39,12 @@ export function SearchCommand({
   triggerClassName,
   label = 'Quick search',
   showShortcut = true,
+  compact = false,
 }: {
   triggerClassName?: string;
   label?: string;
   showShortcut?: boolean;
+  compact?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const platform = useSyncExternalStore(
@@ -75,12 +77,14 @@ export function SearchCommand({
         onClick={() => setOpen(true)}
         className={cn(
           'flex items-center gap-2 rounded-md border border-input bg-muted/50 px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted',
+          compact && 'justify-center gap-0 px-0 py-0',
           triggerClassName,
         )}
+        aria-label={compact ? label : undefined}
       >
         <SearchIcon className="size-3.5 shrink-0" />
-        <span>{label}</span>
-        {showShortcut && (
+        {!compact && <span>{label}</span>}
+        {!compact && showShortcut && (
           <kbd className="pointer-events-none flex h-5 select-none items-center gap-0.5 rounded-[7px] border border-black/10 bg-white/55 px-1 font-mono text-[10px] font-medium text-zinc-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] dark:border-white/[0.12] dark:bg-white/[0.06] dark:text-zinc-300 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
             {isApple ? (
               <Command className="size-2.5" aria-label="Command" />

@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'next-view-transitions';
 
+import MobileMenu from './MobileMenu';
 import { ModeToggle } from './ModeToggle';
 import { SearchCommand } from './SearchCommand';
 import { ThemeToggleButton } from './ThemeSwitch';
@@ -47,7 +48,7 @@ export default function Navbar() {
   const dividerClassName = 'h-6 w-px bg-black/[0.1] dark:bg-white/[0.13]';
 
   return (
-    <header className="pointer-events-none sticky top-0 z-40 flex h-16 items-start justify-center px-4 pt-3">
+    <header className="pointer-events-none sticky top-0 z-40 flex h-16 items-start justify-center px-3 pt-3 sm:px-4">
       <nav
         aria-label="Primary navigation"
         className={shellClassName}
@@ -60,9 +61,7 @@ export default function Navbar() {
           <Home className="size-4 stroke-[2.15]" />
         </Link>
 
-        <div className={dividerClassName} />
-
-        <div className="flex min-w-0 flex-1 items-center justify-center gap-1.5">
+        <div className="hidden min-w-0 flex-1 items-center justify-center gap-1.5 md:flex">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -96,16 +95,31 @@ export default function Navbar() {
           />
         </div>
 
-        <div className={dividerClassName} />
+        <div className="ml-auto flex items-center gap-1.5 md:ml-0">
+          <div className="hidden md:block">
+            <div className={dividerClassName} />
+          </div>
 
-        <ThemeToggleButton
-          icon="moon"
-          variant="circle"
-          start="top-right"
-          blur
-          className="size-8 shrink-0 rounded-full border border-black/[0.1] bg-white/[0.42] p-0 text-zinc-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.62),inset_0_-12px_20px_rgba(0,0,0,0.035)] hover:border-black/15 hover:bg-white/65 hover:text-zinc-950 dark:border-white/[0.13] dark:bg-white/[0.045] dark:text-[#e3e3e6] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-14px_22px_rgba(255,255,255,0.032)] dark:hover:border-white/25 dark:hover:bg-white/[0.09] dark:hover:text-white"
-          iconClassName="size-4"
-        />
+          <div className="flex items-center gap-1.5 md:hidden">
+            <SearchCommand
+              compact
+              label="Quick Search"
+              showShortcut={false}
+              triggerClassName="size-8 shrink-0 rounded-full border border-black/[0.1] bg-white/[0.42] p-0 text-zinc-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.62),inset_0_-12px_20px_rgba(0,0,0,0.035)] hover:border-black/15 hover:bg-white/65 hover:text-zinc-950 dark:border-white/[0.13] dark:bg-white/[0.045] dark:text-[#e3e3e6] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-14px_22px_rgba(255,255,255,0.032)] dark:hover:border-white/25 dark:hover:bg-white/[0.09] dark:hover:text-white"
+            />
+            <MobileMenu />
+            <ModeToggle variant="compact" />
+          </div>
+
+          <ThemeToggleButton
+            icon="moon"
+            variant="circle"
+            start="top-right"
+            blur
+            className="size-8 shrink-0 rounded-full border border-black/[0.1] bg-white/[0.42] p-0 text-zinc-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.62),inset_0_-12px_20px_rgba(0,0,0,0.035)] hover:border-black/15 hover:bg-white/65 hover:text-zinc-950 dark:border-white/[0.13] dark:bg-white/[0.045] dark:text-[#e3e3e6] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-14px_22px_rgba(255,255,255,0.032)] dark:hover:border-white/25 dark:hover:bg-white/[0.09] dark:hover:text-white"
+            iconClassName="size-4"
+          />
+        </div>
       </nav>
     </header>
   );

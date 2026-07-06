@@ -15,6 +15,56 @@ interface CaseStudy {
 }
 
 const caseStudies: Record<string, CaseStudy> = {
+  'roboroot-ai-action-layer': {
+    title: 'RoboRoot AI Action Layer: Shipped a Production-Grade Conversational Commerce Engine & Hardened RAG Pipeline',
+    client: 'RoboRoot',
+    location: 'Remote',
+    image: '/roboroot-homepage.png',
+    tech: ['Node.js', 'Express', 'TypeScript', 'Prisma ORM', 'PostgreSQL', 'Redis', 'Winston', 'React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'OpenAI', 'Razorpay', 'Zod'],
+    website: 'https://roboroot.in',
+    sections: [
+      {
+        number: '01',
+        title: 'Project Overview',
+        body: 'RoboRoot (roboroot.in) is an electronics component marketplace. I shipped a production-ready AI Chat engine that goes beyond simple conversation to execute complex commercial actions. Users can now compile custom Bills of Materials (BOM), view live price-comparison tables, track shipments, and execute full checkouts directly from the chat interface.',
+      },
+      {
+        number: '02',
+        title: 'Challenges Resolved',
+        body: 'Security Vulnerabilities: Allowing AI agents to trigger transactions, retrieve AWBs, and parse bulk uploads introduced severe vectors — prompt injection, cross-user data exposure, and spreadsheet formula injection.\n\nPerformance Bottlenecks: Resolving live catalog prices and stock states inside the RAG loop caused massive database query overhead.\n\nDouble Billing: Network latencies or rapid checkout button clicks in the chat window risked duplicate orders.',
+      },
+      {
+        number: '03',
+        title: 'Hybrid Intent Router & Auth Guard',
+        body: 'Built a pre-retrieval classifier that separates transactional actions from informational queries.\n\nWired strict prerequisites directly into the routing layer — verifying session authenticity, active tokens, and non-empty carts before initiating checkout flows.\n\nConfigured a centralized interceptor inside the tool dispatcher to automatically secure all downstream tool executions.',
+      },
+      {
+        number: '04',
+        title: 'Real-Time Fact Freshness & Batch Querying',
+        body: 'Refactored the context builder to query live database prices and stock counts dynamically at runtime.\n\nConsolidated what were previously individual database reads into single, batched queries via Prisma, neutralizing the N+1 query problem.\n\nOptimized the RAG retrieval pipeline using batched database lookups, completely eliminating N+1 bottlenecks to query stock and pricing details in real-time.',
+      },
+      {
+        number: '05',
+        title: 'Checkout Idempotency & Webhook Validation',
+        body: 'Developed a time-bucketed Redis locking mechanism using a SHA-256 hash of the userId and cartItems (5-minute window) to completely block duplicate orders.\n\nStandardized state transitions for pending and failed checkouts, dynamically determining expirations (UNCONFIRMED_TIMEOUT) after 15 minutes have elapsed.\n\nIntegrated the checkout state machine with the platform\'s HMAC-SHA256 Razorpay webhook parser.',
+      },
+      {
+        number: '06',
+        title: 'Security Hardening & PII Protection',
+        body: 'Built a raw value-only string parser that screens bulk CSV uploads, explicitly rejecting cell values prefixed with formula headers (=, +, -, @) or command commands.\n\nSecured order tracking by masking AWBs and customer PII, enforcing strict ownership checks to deny cross-user lookup attempts.\n\nIntegrated Winston-based logging to audit state-changing tools while fully redacting card credentials and payment secrets.',
+      },
+      {
+        number: '07',
+        title: 'Technical Stack',
+        body: 'Backend: Node.js, Express, TypeScript, Prisma ORM, PostgreSQL, Redis, Winston\n\nFrontend: React, Next.js (App Router, Turbopack), Tailwind CSS, Framer Motion\n\nIntegrations: Zod Validation, Razorpay Payment Gateway, OpenAI GPT Tool Call APIs',
+      },
+      {
+        number: '08',
+        title: 'Results & Achievements',
+        body: 'Zero Double Billing: Time-bucketed Redis transaction locking eliminated duplicate checkout execution.\n\n100% Secure File Uploads: Custom raw string parsing successfully blocked spreadsheet formula injections.\n\nHigh Performance RAG: Consolidated database lookups minimized retrieval latency to flat constant-time query complexity.\n\nFrictionless UX: Reduced checkout completion times from minutes to a 5-second in-chat checkout flow.',
+      },
+    ],
+  },
   'jain-and-iyer': {
     title: 'Designing a Dual-Model E-commerce Platform for Individuals & Residential Societies',
     client: 'Jain & Iyer',

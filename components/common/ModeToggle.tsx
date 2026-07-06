@@ -6,9 +6,13 @@ import { cn } from '@/lib/utils';
 export function ModeToggle({
   variant = 'default',
 }: {
-  variant?: 'default' | 'nav';
+  variant?: 'default' | 'nav' | 'compact';
 }) {
   const { mode, setMode } = useMode();
+
+  const toggleMode = () => {
+    setMode(mode === 'software' ? 'robotics' : 'software');
+  };
 
   if (variant === 'nav') {
     return (
@@ -38,6 +42,27 @@ export function ModeToggle({
           Robotics
         </button>
       </div>
+    );
+  }
+
+  if (variant === 'compact') {
+    const isSoftware = mode === 'software';
+
+    return (
+      <button
+        type="button"
+        onClick={toggleMode}
+        aria-label={`Switch to ${isSoftware ? 'robotics' : 'software'} mode`}
+        className="relative flex h-8 w-14 shrink-0 items-center rounded-full border border-black/[0.1] bg-white/[0.48] p-0.5 text-[11px] font-medium leading-none text-zinc-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.62),inset_0_-12px_20px_rgba(0,0,0,0.035)] backdrop-blur-2xl transition-colors hover:border-black/15 hover:bg-white/65 dark:border-white/[0.13] dark:bg-white/[0.045] dark:text-[#bfc0c4] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-14px_22px_rgba(255,255,255,0.035)] dark:hover:border-white/25 dark:hover:bg-white/[0.09]"
+      >
+        <span
+          className={cn(
+            'absolute left-0.5 top-0.5 size-7 rounded-full bg-zinc-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_8px_18px_rgba(0,0,0,0.08)] transition-transform duration-200 dark:bg-white/[0.16] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_20px_rgba(0,0,0,0.24)]',
+            isSoftware ? 'translate-x-0' : 'translate-x-6',
+          )}
+        />
+        <span className="sr-only">{mode}</span>
+      </button>
     );
   }
 

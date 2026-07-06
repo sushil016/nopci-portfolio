@@ -64,10 +64,25 @@ export function ClientProjectCard({ project }: ClientProjectCardProps) {
         )}
       </div>
 
+      {/* Title */}
+      <h3 className="text-sm font-semibold leading-snug">{project.title}</h3>
+
       {/* Description */}
-      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+      <p className="text-sm text-muted-foreground leading-relaxed">
         {project.description}
       </p>
+
+      {/* Bullets */}
+      {project.bullets && project.bullets.length > 0 && (
+        <ul className="flex flex-col gap-1.5">
+          {project.bullets.map((bullet, i) => (
+            <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground leading-relaxed">
+              <span className="mt-1.5 size-1 shrink-0 rounded-full bg-muted-foreground/40" />
+              {bullet}
+            </li>
+          ))}
+        </ul>
+      )}
 
       {/* Tech pills */}
       <div className="flex flex-wrap gap-1.5">

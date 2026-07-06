@@ -1,4 +1,5 @@
 import CTA from "@/components/landing/CTA";
+import ClientProjects from "@/components/landing/ClientProjects";
 import DevDocs from "@/components/landing/DevDocs";
 import Education from "@/components/landing/Education";
 import Experience from "@/components/landing/Experience";
@@ -15,9 +16,9 @@ export default function Home() {
       <Hero />
       <Skills />
       <Experience />
-      {/* <Terminal /> */}
-      <DevDocs />
+      <ClientProjects />
       <Projects />
+      <DevDocs />
       <Education />
       {/* <Github /> */}
       <Journey />
